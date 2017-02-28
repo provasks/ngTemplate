@@ -1,0 +1,48 @@
+<!doctype html>
+<html ng-app="App" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- <base href="/"> -->
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <meta name="format-detection" content="telephone=no">
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <!-- endbuild -->
+</head>
+
+<body ng-controller="mainCtrl as main">
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js({.tmp,source}) scripts/scripts.js -->
+    <!-- settings -->
+    <script src="app/common/settings/settings.js"></script>
+    <!--<script src="app/common/settings/en.js"></script>-->
+    <!-- app -->
+    <script src="app/app.module.js"></script>
+    <script src="app/app.routes.js"></script>
+    <!-- constants -->
+    <script src="app/common/settings/en.js"></script>
+    <!-- services -->
+    <script src="app/common/services/apiService.js"></script>
+    <script src="app/common/services/commonService.js"></script>
+    <!-- directives -->
+    <script src="app/common/directives/popUp/popUp.js"></script>
+    <!-- filters -->
+    <!-- controllers -->
+    <script src="app/common/main/mainCtrl.js"></script>
+    <script src="app/components/shoppingCart/shoppingCartCtrl.js"></script>
+
+    <!-- endbuild -->
+</body>
+
+</html>

@@ -1,0 +1,8 @@
+{
+    "undef": true,
+    "unused": true,
+    "predef": ["angular", "module", "require"],
+    "globals": {
+        "settings": true
+    }
+}

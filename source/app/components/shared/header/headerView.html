@@ -1,0 +1,123 @@
+<div class="navbar headFoot headerMenu navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-lg-12 headerSticker" ng-if="!main.closeSticker">
+                <div class="col-xs-12 col-sm-12 col-lg-8 col-lg-offset-2 stickerWrapper text-center">
+                    <span ng-bind="main.lang.siteMsg"></span>
+                    <a ng-href="{{main.lang.corpSite}}" target="_blank" ng-bind="main.lang.knowMore"></a>
+                    <i class="icon-MCD_website_fonticons__close stickerClose" ng-click="main.closeStickr()"></i>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-lg-8 col-lg-offset-2 navBarHeader">
+                <!-- <img src="assets/img/hamburgerIcon.png" class="visible-xs hamburgerMenu" ng-click="main.openMenu()" /> -->
+                <i class="icon-MCD_website_fonticons__menu visible-xs hamburgerMenu menuIcons" ng-click="main.openMenu()"></i>
+                <a ui-sref="order" ui-sref-opts="{reload: 'order'}" title="home">
+                    <img src="assets/img/Mcd_logo_web.png" class="logo" />
+                    <!-- <img src="assets/img/searchIcon.png" class="visible-xs searchIcon" /> -->
+                </a>
+                <a class="rightBtns" ui-sref="search" title="search" ng-click="main.toggleSearchBar()">
+                    <i class="icon-MCD_website_fonticons__search visible-xs searchIcon menuIcons"></i>
+                </a>
+                <div class="pull-right menuDiv hidden-xs rightBtns">
+                    <ul>
+                        <!--     <li ng-if="main.orderState">
+                            <a ui-sref="{{main.orderState}}({{main.orderStateParams}})" ui-sref-active="active">{{main.lang.order}}
+                                <div class="linkBorder"></div></a>
+                        </li> -->
+                        <li>
+                            <a ui-sref="order" ui-sref-opts="{reload: 'order'}" ui-sref-active="active" title="order" class="orderLink">{{main.lang.order}}
+                                <div class="linkBorder"></div></a>
+                        </li>
+                        <!--<li><a ui-sref="account" ui-sref-active="active" ng-click="main.loginActive=true;">account</a></li>-->
+                        <li ng-if="!main.loginStatus">
+                            <a ng-click="main.loginPopUp();">{{main.lang.signIn}}
+                                <div class="linkBorder"></div>
+                            </a>
+                        </li>
+                        <li ng-if="main.loginStatus">
+                            <a ui-sref="{{main.lang.orderHistory}}" ui-sref-active="active" id="account">{{main.lang.account}}
+                                <div class="linkBorder"></div>
+                            </a>
+                        </li>
+                        <li>
+                            <a ui-sref="more" ui-sref-active="active">{{main.lang.more}}
+                                <div class="linkBorder"></div>
+                            </a>
+                        </li>
+                        <li><a ng-click="cartVm.getCartList(true);" class="cart">{{main.lang.cart}}<span>({{cartVm.cartCount}})</span></a></li>
+                    </ul>
+                </div>
+                <div class="mobileSearchBar visible-xs transition">
+                    <div class="inner-addon right-addon hidden-sm">
+                        <i class="glyphicon icon-MCD_website_fonticons__close" ng-click="main.closeSearchBar()"></i>
+                        <input type="text" ng-model="main.searchKey" class="form-control" placeholder="What would you like?" ng-change="main.searchText()" id="mobileSearchInput" />
+                    </div>
+                </div>
+                <div class="hdBackBtn">
+                    <a href="#" onclick="window.history.back();return false;">
+                        <i class="icon-MCD_website_fonticons__arrow"></i>
+                        <span> Back </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="sideNav transition" id="sideNav">
+    <div class="sideMenu">
+        <profile>
+            <div>
+                <img ng-src="{{main.ProfileImg}}" class="img-circle profileImg" ng-class="{'pull-left': main.loginStatus == 1}" alt="Cinque Terre">
+                <a ng-click="main.loginPopUp();" ng-bind="main.lang.signIn" ng-if="!main.loginStatus"></a>
+                <div class="profileInfo" ng-if="main.loginStatus">
+                    <span ng-bind="main.userData.ProfileName"></span>
+                    <br/>
+                    <a ui-sref="{{main.lang.orderHistory}}">View profile</a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </profile>
+        <location>
+            <div ng-if="!main.loginStatus" class="mLocation" ng-click="main.openMenu();main.gotoMap();">
+                <i class="icon-MCD_website_fonticons__location_pin locationIcon"></i>
+                <span ng-bind="main.lang.setLocation"></span>
+            </div>
+            <div class="mLocation" ng-if="main.loginStatus" ng-click="main.openMenu();main.gotoMap();">
+                {{main.deliveryAddress.MapAddress}}
+            </div>
+        </location>
+        <ul>
+            <li>
+                <a ui-sref="order" ui-sref-opts="{reload: 'order'}" ui-sref-active="active" ng-bind="main.lang.order"></a>
+            </li>
+            <li ng-if="main.loginStatus">
+                <a ui-sref="{{main.lang.orderHistory}}" ui-sref-active="active" ng-bind="main.lang.account"></a>
+            </li>
+            <li ng-click="main.openMenu()">
+                <a ui-sref="more" ui-sref-active="active" ng-bind="main.lang.more"></a>
+            </li>
+            <!-- <li><a>cart(0)</a></li> -->
+        </ul>
+        <ul class="sideMenuFooter">
+            <li>
+                <a ng-href="{{main.lang.privacyPolicyLink}}" target="_blank" ng-bind="main.lang.privacyPolicy"></a>
+            </li>
+            <li>
+                <a ng-href="{{main.lang.canAndRefundsLink}}" target="_blank" ng-bind="main.lang.canAndRefunds"></a>
+            </li>
+            <li>
+                <a ng-href="{{main.lang.termsAndConditionsLink}}" target="_blank" ng-bind="main.lang.termsAndConditions"></a>
+            </li>
+            <li>
+                <a ng-href="{{main.lang.faqLink}}" target="_blank" ng-bind="main.lang.faq"></a>
+            </li>
+        </ul>
+        <help>
+            <div class="mhelp">
+                <h6 ng-bind="main.lang.facingAnIssue"></h6>
+                <i class="icon-MCD_website_fonticons__Phone"></i>
+                <a href="tel:+{{main.appInfo.MCDContactNo}}" ng-bind="main.appInfo.MCDContactNo"></a>
+            </div>
+        </help>
+    </div>
+</div>
